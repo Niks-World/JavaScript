@@ -7,6 +7,8 @@ let users = [
     { firstName: "Yogesh", lastName: "Bhat", place: "Kolkata" },
   ];
 
+ 
+ //-------------------------------------------------------------------------------
   var data= users.filter(function(ele){
     return users.firstName + " "+ users.lastName +" "+ users.place;
   });
@@ -20,4 +22,17 @@ let users = [
 ]
   */ 
 
+
+// here is the right method 
+
+var out= users.filter(function(ele){
+    if(ele.place=== "Banglore"){
+       return users
+    }
+  }).map(function(el){
+    return el.firstName +" "+ el.lastName
+   }) 
+
+  console.log(out);
+  //op=>  [ 'Nrupul Dev', 'Prateek Shukla' ]
  
