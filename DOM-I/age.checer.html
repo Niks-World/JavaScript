@@ -1,0 +1,47 @@
+<!-- /*     DOM-I DRIVING AGE CHECK
+Create an age_check.html file. With an input field (takes the age of the user) 
+and a button You must fill in valid id and other attributes for elements to make the buttons work.
+
+When the user clicks the button the following must happen:
+
+If the user is older than 18 print You can drive in India! in the p tag.
+If the user is younger than 18 print You can't drive in India in the p tag.
+If the user is exactly 18 years old print You are just old enough to drive in India! in the p tag. */ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age_checker</title>
+</head>
+<body>
+    <input id="data" type="text" placeholder="00">
+    <button id="press">CHECK</button>
+    <p id="print"></p>
+
+</body>
+<script>
+    document.getElementById("press").addEventListener("click", agecheck);
+
+    function agecheck(){
+    var age=document.getElementById("data").value;
+
+    var status = document.getElementById("print");
+    // console.log(age)
+    if(age === 18){
+        status.textContent=" You are just old enough to drive in India";
+    }
+   
+    else if(18 > age){
+        status.textContent="You can't drive in India";
+    }
+    else{
+        status.textContent="You can drive in India!";
+    }
+    
+    }
+
+</script>
+</html>
