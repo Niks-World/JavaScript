@@ -2,9 +2,32 @@
 <html>
   <head>
     <title>Masai Employee Records</title>
+    <style>
+      form{
+      
+        text-align: center;
+        align-items: center;
+        /* flex-direction: column; */
+        width: 5%;
+
+         box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+        
+      }
+     
+        
+      #name{
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        
+      }
+      th{
+        /* justify-content: space-between; */
+        width: 5%;
+      }
+    </style>
   </head>
   <body>
     <!-- Use this form for taking the inputs  -->
+    <h1 style="text-align: center; color: blue;">Employe Records</h1>
     <form>
       <input placeholder="Name" type="text" id="name" />
       <input placeholder="Employee ID" type="text" id="employee_id" />
@@ -27,7 +50,7 @@
       <option value="Finance">Finance</option>
       <option value="Engineering">Engineering</option>
     </select>
-    <table>
+    <table border="1">
       <thead>
         <tr>
           <th>Name</th>
