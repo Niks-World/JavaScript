@@ -47,7 +47,7 @@
   </body>
   <script>
     document.querySelector("form").addEventListener("submit",employRec);
-    document.getElementById("filter").addEventListener("change", filterdata);
+    // document.getElementById("filter").addEventListener("change", filterdata);
 
     var userArr =[];
     
@@ -76,7 +76,87 @@
 
       displayUser(userArr)
     }
-    
+    function displayUser(){
+      document.querySelector("tbody").textContent="";
+      userArr.map(function(ele,index){
+
+        var tr= document.createElement("tr");
+
+        var td1 = document.createElement("td");
+        td1.textContent = ele.name;
+
+        var td2 = document.createElement("td");
+        td2.textContent = ele.employee_id;
+
+        var td3 = document.createElement("td");
+        td3.textContent = ele.department;
+
+        var td4 = document.createElement("td");
+        td4.textContent = ele.experience;
+
+        var td5 = document.createElement("td");
+        td5.textContent = ele.email;
+
+        var td6 = document.createElement("td");
+        td6.textContent = ele.mobile;
+
+        var td7 = document.createElement("td");
+        
+        if(ele.experience > 5){
+          td7.textContent = "Senior";
+        }
+        else if(ele.experience >  2 && ele.experience <= 5 ){
+          td7.textContent="Junior";
+        }
+        else{
+          td7.textContent = "Fresher";
+        }
+
+        var td8 = document.createElement("td");
+    td8.textContent = "Delete";
+    td8.style.background = "red";
+
+    td8.addEventListener("click", function () {
+      // Find the row to delete by going up the DOM tree
+      var rowToDelete = event.target.parentElement;
+
+      // Remove the row from the table
+      rowToDelete.remove();
+
+      // Get the index of the row to delete and delete it from the userArr
+      var indexToDelete = userArr.findIndex(function (ele, index) {
+        return ele.name === rowToDelete.querySelector("td").textContent;
+      });
+
+      if (indexToDelete !== -1) {
+        userArr.splice(indexToDelete, 1);
+      }
+    });
+
+        tr.append(td1, td2 ,td3, td4, td5, td6, td7, td8);
+        document.querySelector("tbody").append(tr);
+
+      })
+    }
+
+    function deleterow(){
+      var  delt = userArr.splice(index,1);
+      displayUser(userArr); 
+    }
+
+    function filtrtdata(){
+      var val = document.getElementById("filter").value;
+      var filter= userArr.filter(function(ele,index ){
+
+        if(val === ""){
+          return userArr;
+        }
+        else{
+          return (ele.department == val)
+        }
+      })
+      displayUser(filter);
+    }
 
   </script>
 </html>
