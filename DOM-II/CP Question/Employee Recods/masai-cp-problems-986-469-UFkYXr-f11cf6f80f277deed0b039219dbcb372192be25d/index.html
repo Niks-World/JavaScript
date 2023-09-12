@@ -46,6 +46,37 @@
     </table>
   </body>
   <script>
+    document.querySelector("form").addEventListener("submit",employRec);
+    document.getElementById("filter").addEventListener("change", filterdata);
+
+    var userArr =[];
+    
+    function employRec(){
+      event.preventDefault();
+
+      var name= document.getElementById("name").value;
+      var employee_id= document.getElementById("employee_id").value;
+      var department= document.getElementById("department").value;
+      var experience= document.getElementById("experience").value;
+      var email= document.getElementById("email").value;
+      var mobile= document.getElementById("mobile").value;
+
+      let userObj ={
+        name : name,
+        employee_id : employee_id,
+        department : department,
+        experience : experience,
+        email : email,
+        mobile : mobile,
+
+      }
+
+      userArr.push(userObj);
+      console.log(userArr);
+
+      displayUser(userArr)
+    }
+    
 
   </script>
 </html>
