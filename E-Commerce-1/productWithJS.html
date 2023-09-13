@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product with  JS</title>
+    <style>
+     #data{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 10px;
+       }
+       #data > div> div{
+        display: flex;
+       }
+       p+p{
+        text-decoration: line-through;
+        margin-left: 10px;
+       }
+       img{
+        width: 90%;
+        size: 80px;
+       }
+       h1{
+        text-align: center;
+        text-decoration: underline;
+        
+        
+       }
+    </style>
+</head>
+<body>
+    <div id="data"> </div>
+</body>
+</html>
+
+<script>
+    var product =[
+
+    { name : "Nike Shoes",
+    price: 17990,
+    MRP : 26990,
+    image_url:
+    "https://imgs.search.brave.com/mOxyX4by_6acq4wA3fto2K5BgdOvAjy38uygQdh-Juc/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWcu/YnV6emZlZWQuY29t/L2J1enpmZWVkLXN0/YXRpYy9jb21wbGV4/L2ltYWdlcy9ZMTlq/Y205d0xHaGZNVEUx/Tnl4M1h6RTVOaklz/ZUY4NE5peDVYekk9/L3R4amhyZW5mZWR1/b3loMDVqZXJnLzE3/LW5pa2UtYWlyLXll/ZXp5LTEtc2cuanBn"
+    },
+
+   { name : "Nike Shoes",
+    price: 17990,
+    MRP : 26990,
+    image_url:
+    "https://tinyurl.com/86nypckw"
+    },
+
+    { name : "Nike Shoes",
+    price: 17990,
+    MRP : 26990,
+    image_url:
+    "https://imgs.search.brave.com/mOxyX4by_6acq4wA3fto2K5BgdOvAjy38uygQdh-Juc/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWcu/YnV6emZlZWQuY29t/L2J1enpmZWVkLXN0/YXRpYy9jb21wbGV4/L2ltYWdlcy9ZMTlq/Y205d0xHaGZNVEUx/Tnl4M1h6RTVOaklz/ZUY4NE5peDVYekk9/L3R4amhyZW5mZWR1/b3loMDVqZXJnLzE3/LW5pa2UtYWlyLXll/ZXp5LTEtc2cuanBn"
+    },
+
+   { name : "Nike Shoes",
+    price: 17990,
+    MRP : 26990,
+    image_url:
+    "https://tinyurl.com/86nypckw"
+    },
+
+    { name : "Nike Shoes",
+    price: 17990,
+    MRP : 26990,
+    image_url:
+    "https://imgs.search.brave.com/mOxyX4by_6acq4wA3fto2K5BgdOvAjy38uygQdh-Juc/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWcu/YnV6emZlZWQuY29t/L2J1enpmZWVkLXN0/YXRpYy9jb21wbGV4/L2ltYWdlcy9ZMTlq/Y205d0xHaGZNVEUx/Tnl4M1h6RTVOaklz/ZUY4NE5peDVYekk9/L3R4amhyZW5mZWR1/b3loMDVqZXJnLzE3/LW5pa2UtYWlyLXll/ZXp5LTEtc2cuanBn"
+    },
+
+   { name : "Nike Shoes",
+    price: 17990,
+    MRP : 26990,
+    image_url:
+    "https://tinyurl.com/86nypckw"
+    },
+
+    { name : "Nike Shoes",
+    price: 17990,
+    MRP : 26990,
+    image_url:
+    "https://imgs.search.brave.com/mOxyX4by_6acq4wA3fto2K5BgdOvAjy38uygQdh-Juc/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWcu/YnV6emZlZWQuY29t/L2J1enpmZWVkLXN0/YXRpYy9jb21wbGV4/L2ltYWdlcy9ZMTlq/Y205d0xHaGZNVEUx/Tnl4M1h6RTVOaklz/ZUY4NE5peDVYekk9/L3R4amhyZW5mZWR1/b3loMDVqZXJnLzE3/LW5pa2UtYWlyLXll/ZXp5LTEtc2cuanBn"
+    },
+
+   { name : "Nike Shoes",
+    price: 17990,
+    MRP : 26990,
+    image_url:
+    "https://tinyurl.com/86nypckw"
+    },
+
+    { name : "Nike Shoes",
+    price: 17990,
+    MRP : 26990,
+    image_url:
+    "https://imgs.search.brave.com/mOxyX4by_6acq4wA3fto2K5BgdOvAjy38uygQdh-Juc/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWcu/YnV6emZlZWQuY29t/L2J1enpmZWVkLXN0/YXRpYy9jb21wbGV4/L2ltYWdlcy9ZMTlq/Y205d0xHaGZNVEUx/Tnl4M1h6RTVOaklz/ZUY4NE5peDVYekk9/L3R4amhyZW5mZWR1/b3loMDVqZXJnLzE3/LW5pa2UtYWlyLXll/ZXp5LTEtc2cuanBn"
+    },
+
+   { name : "Nike Shoes",
+    price: 17990,
+    MRP : 26990,
+    image_url:
+    "https://tinyurl.com/86nypckw"
+    },
+];
+
+displayProducts();
+
+function displayProducts(){
+    product.map(function(ele){
+        var div = document.createElement("div");
+        var image = document.createElement("img");
+        image.setAttribute("src", ele.image_url);
+
+        image.setAttribute("alt",ele.name);
+
+        var h5 = document.createElement("h5")
+        h5.textContent =ele.name;
+
+        var pricebox = document.createElement("div");
+
+        var finalPrice = document.createElement("p");
+        finalPrice.textContent= ele.price
+        var MRP = document.createElement("p");
+        MRP.textContent =ele.MRP;
+
+        pricebox.append(finalPrice, MRP);
+
+        div.append(image, h5, pricebox);
+        document.querySelector("body").append(div);
+    })
+}
+</script>
