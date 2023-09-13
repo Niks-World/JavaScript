@@ -74,7 +74,12 @@ document.querySelector('form').addEventListener("submit",mytodo);
     displaytodo();
 
     function displaytodo(){
+
+       // when we uncomet it task will clear
+        // document.querySelector("tbody").append(tr).textContent = ""; refresing 1 +2
+
         todoArr.map(function (ele){
+           
 
             var tr = document.createElement("tr");
 
@@ -151,3 +156,18 @@ function deleteTask(){
     event.target.parentNode.remove();
 
 }
+
+// todo = []
+
+// submit / add a task => todo.length =1
+
+//todo =[1]
+// displayTodo () => => tbody = " " & todo => 1
+
+//submit / add a 2nd task => todo.length =2
+
+//displayTod() => tbody = " " & =>  2
+
+//64+68 = 2 =3
+
+// 1 + 2 = 3 task
