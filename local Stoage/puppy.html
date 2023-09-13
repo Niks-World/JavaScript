@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Puppy Likes</title>
+</head>
+<body>
+    <img src="https://www.rd.com/wp-content/uploads/2018/02/30_Adorable-Puppy-Pictures-that-Will-Make-You-Melt_124167640_YamabikaY.jpg?fit=700%2C467" alt="">
+    <div> <p> Likes: <span id="like"> </span></p>
+    <p>Dislikes : <span id="dislike"></span> </p>
+    </div>
+    <div>
+        <button id="likebtn"> Like</button>
+        <button id="dislikebtn">Dislike</button>
+    </div>
+    
+</body>
+</html>
+<script>
+    document.getElementById("likebtn").addEventListener("click", likefun);
+    var likeCount = 0;
+    function likefun(){
+        likeCount++;
+        console.log(likeCount);
+        document.querySelector("#like").textContent = likeCount;
+    }
+
+    document.getElementById("dislikebtn").addEventListener("click", dislikefun);
+    var dislikeCount = 0;
+    function dislikefun(){
+        dislikeCount++;
+        console.log(dislikeCount);
+        document.querySelector("#dislike").textContent = dislikeCount;
+    }
+
+
+</script>
