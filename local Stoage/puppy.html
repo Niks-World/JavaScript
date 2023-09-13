@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Puppy Likes</title>
+    <link rel="icon" href="https://img.freepik.com/free-vector/cute-labrador-dog-sitting-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated_138676-4332.jpg?w=2000">
 </head>
 <body>
     <img src="https://www.rd.com/wp-content/uploads/2018/02/30_Adorable-Puppy-Pictures-that-Will-Make-You-Melt_124167640_YamabikaY.jpg?fit=700%2C467" alt="">
@@ -19,19 +20,40 @@
 </html>
 <script>
     document.getElementById("likebtn").addEventListener("click", likefun);
-    var likeCount = 0;
+   var likeCount;
+
+    if(localStorage.getItem("like")=== null) {
+     likeCount = 0;
+    }
+    else{
+        likeCount = localStorage.getItem("like");
+    }
+    document.querySelector("#like").textContent = likeCount;
+
     function likefun(){
         likeCount++;
-        console.log(likeCount);
+        // console.log(likeCount);
         document.querySelector("#like").textContent = likeCount;
+        localStorage.setItem("like", likeCount);
     }
 
     document.getElementById("dislikebtn").addEventListener("click", dislikefun);
-    var dislikeCount = 0;
+    var dislikeCount; 
+    if (localStorage.getItem("dislike")=== null ){
+        dislikeCount =0;
+    }
+    else{
+        dislikeCount = localStorage.getItem("dislike");
+    }
+
+    document.querySelector("#dislike").textContent = dislikeCount;
+   
+
     function dislikefun(){
         dislikeCount++;
-        console.log(dislikeCount);
+        // console.log(dislikeCount);
         document.querySelector("#dislike").textContent = dislikeCount;
+        localStorage.setItem("dislike", dislikeCount);
     }
 
 
