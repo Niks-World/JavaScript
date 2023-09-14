@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <script 
+    src="https://kit.fontawesome.com/09ea9ed7f5.Js"
+    crossorigin="anonymous" 
+    ></script>
+    <style>
+    .cartProd{
+        display: flex;
+        justify-content: space-between;
+
+    }
+    img{
+        width: 20%;
+
+    }
+    #cartVal{
+       display: flex;
+       /* Top right buttom left  margin work*/
+       margin-left: 20%;
+       margin-top: 10px;
+        align-items: center;
+        /* border: 1px solid red; */
+        box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+        justify-content: space-around;
+    }
+    .fa-house-chimney {
+        font-size: 30px;
+        margin-right: 10px; /* Add right margin to create space */
+       
+    }
+
+    /* Add margin to the anchor tag */
+    h1 a {
+        margin-right: 100px; /* Adjust the margin as needed */
+       
+    }
+
+    h1 {
+        text-align: center;
+        border: 1px solid red;
+        border-radius: 50px;
+        padding: 10px 20px;
+        box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    }
+
+   
+    </style>
+</head>
+<body>
+    <div id="head">
+        
+        <h1>  CART PAGE <a href="productWithJS.html"><i class="fa-solid fa-house-chimney"></i>
+        </a></h1>
+    </div>
+    
+   
+</body>
+</html>
+
+<script>
+    var cart = JSON.parse(localStorage.getItem("cartProduct")) || [];
+
+    if(cart.length ===0 ){
+        document.querySelector("body").textContent = "Add some products to Cart";
+
+    }
+    else{
+        displayCart();
+        calculateTotal()
+    }
+
+    function displayCart(){
+        cart.map(function(ele){
+
+            var div = document.createElement("div");
+        var image = document.createElement("img");
+        image.setAttribute("src", ele.image_url);
+
+        image.setAttribute("alt",ele.name);
+
+        var h5 = document.createElement("h5")
+        h5.textContent =ele.name;
+
+        var pricebox = document.createElement("div");
+
+        var finalPrice = document.createElement("p");
+        finalPrice.textContent= "₹" +ele.price;
+
+        div.append(image, h5, finalPrice);
+        div.setAttribute("class", "cartProd");
+
+        document.querySelector("body").append(div);
+
+        })
+    }
+
+    function calculateTotal(){
+        var cartVal  = cart.reduce(function(acc, currEl){
+            return acc.price + currEl.price;  //price will sum the cart value
+        });
+        cartVal = "₹" + cartVal ;
+
+        var div = document.createElement("div");
+        div.setAttribute("id","cartVal")
+
+        var p= document.createElement("p");
+        p.textContent ="Total Value";
+
+        div.append(p, cartVal);
+        document.querySelector("body").append(div);
+    
+    }
+;</script>
+<!-- cart [0] => {name: , price} -->

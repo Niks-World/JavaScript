@@ -42,6 +42,7 @@
        img{
         width: 100%;
         border-radius: 20px;
+        height: 300px;
        
        }
        h1{
@@ -49,19 +50,31 @@
         text-decoration: underline;
        }
        button{
+        background-color: rgba(13, 230, 230, 0.515);
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+       }
+       button > a{
+        color: rgb(230, 131, 18);
+        text-decoration: none;
+        
+       }
+       .cartbtn{
         width: 100%;
         padding: 10px;
         background-color: teal;
         color: azure;
         border: none;
         border-radius: 10px;
-
-
        }
+       
     </style>
 </head>
 <body>
     <h1>NIKE STORE</h1>
+    <button> <a href="cartPAge.html"> Go to Cart</a></button>
     <div id="data"> </div>
 </body>
 </html>
@@ -156,13 +169,14 @@ function displayProducts(){
         var pricebox = document.createElement("div");
 
         var finalPrice = document.createElement("p");
-        finalPrice.textContent= "₹" +ele.price
+        finalPrice.textContent= "₹" +ele.price;
         var MRP = document.createElement("p");
         MRP.textContent ="₹" +ele.MRP;
 
         pricebox.append(finalPrice, MRP);
 
         var btn = document.createElement("button");
+        btn.setAttribute("class", "cartbtn")
         btn.textContent= "Add to Cart";
 
         btn.addEventListener("click", function(){
@@ -176,7 +190,7 @@ function displayProducts(){
     })
 }
 
-var cartArr= [];
+var cartArr= JSON.parse(localStorage.getItem("cartProduct")) || [];
 
 function addtocart(ele){
    
