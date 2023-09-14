@@ -5,31 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product with  JS</title>
     <style>
+  
+
+ /* Media Query for Tablets (768px and above) */
+ @media (min-width: 768px) {
+        #data > div {
+            grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns for tablets */
+        }
+    }
+
+    /* Media Query for Mobile (less than 768px) */
+    @media (max-width: 767px) {
+        #data {
+            grid-template-columns: 1fr; /* Single column for mobile */
+        }
+    }
+
+   
+
+
      #data{
         display: grid;
         grid-template-columns: repeat(4,1fr);
         gap: 10px;
+
        }
-       #data > div> div{
-        display: flex;
+       #data > div{
+       border-radius: 20px;
+       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
        }
        p+p{
         text-decoration: line-through;
         margin-left: 10px;
        }
        img{
-        width: 90%;
-        size: 80px;
+        width: 100%;
+        border-radius: 20px;
+       
        }
        h1{
         text-align: center;
         text-decoration: underline;
-        
-        
+       }
+       button{
+        width: 100%;
+        padding: 10px;
+        background-color: teal;
+        color: azure;
+        border: none;
+        border-radius: 10px;
+
+
        }
     </style>
 </head>
 <body>
+    <h1>NIKE STORE</h1>
     <div id="data"> </div>
 </body>
 </html>
@@ -124,14 +156,34 @@ function displayProducts(){
         var pricebox = document.createElement("div");
 
         var finalPrice = document.createElement("p");
-        finalPrice.textContent= ele.price
+        finalPrice.textContent= "₹" +ele.price
         var MRP = document.createElement("p");
-        MRP.textContent =ele.MRP;
+        MRP.textContent ="₹" +ele.MRP;
 
         pricebox.append(finalPrice, MRP);
 
-        div.append(image, h5, pricebox);
-        document.querySelector("body").append(div);
+        var btn = document.createElement("button");
+        btn.textContent= "Add to Cart";
+
+        btn.addEventListener("click", function(){
+            addtocart(ele);
+        
+        });
+    
+
+        div.append(image, h5, pricebox ,btn);
+        document.querySelector("#data").append(div);
     })
 }
+
+var cartArr= [];
+
+function addtocart(ele){
+   
+    cartArr.push(ele);
+    console.log(ele);
+    localStorage.setItem("cartProduct", JSON.stringify(cartArr));
+
+}
+
 </script>
