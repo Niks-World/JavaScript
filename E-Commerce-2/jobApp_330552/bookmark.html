@@ -21,6 +21,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Job Applied</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody id="body"></tbody>
@@ -29,5 +30,29 @@
   </body>
   <script>
     //you need to code here
+    var bookmark = JSON.parse(localStorage.getItem("bookmark")) || [];
+   
+    displaybookmark();
+
+    function displaybookmark(){
+    bookmark.map(function (elem){
+      var tr = document.createElement("tr");
+
+      var td1 = document.createElement("td");
+        td1.textContent = elem.name;
+
+        var td2 = document.createElement("td");
+        td2.textContent = elem.email;
+
+        var td3 = document.createElement("td");
+        td3.textContent = elem.role;
+
+        tr.append(td1, td2, td3);
+
+      document.querySelector("#body").append(tr);
+
+    });
+  }
+
   </script>
 </html>
