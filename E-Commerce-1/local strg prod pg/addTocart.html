@@ -47,61 +47,13 @@ If user enters ‘masai30’, give a 30% discount. Update the total cart price a
 
 <body>
  <button><a href="/E-Commerce-1/local strg prod pg/man.html">Home Page</a></button>
+ <input id="code" type="text"placeholder=" Promo Code"><button>Apply coupon </button>
 </body>
 </html>
 
-<!-- <script>
-
-
-    var cart =JSON.parse(localStorage.getItem("cartproduct")) || [];
-
-    if(cart.length ===0){
-        document.querySelector("body").textContent= "add Some product TO cart";
-    }
-    else{
-        displaycart();
-        calculatetotal();
-    }
-
-    function displaycart(){
-        cart.map(function(ele){
-            var div = document.createElement("div");
-            var image = document.createElement("img");
-
-            image.setAttribute("src",ele.immage_url);
-            image.setAttribute("alt", ele.name);
-
-            var name= document.createElement("h5");
-            name.textContent = ele.name;
-
-            var price= document.createElement("p");
-         price.textContent="₹"+ ele.strikedoffprice;
-
-            div.append(image,name, price);
-            div.setAttribute("class", "cartpro")
-            document.querySelector("body").append(div);
-            
-        })
-    }
-    function calculatetotal(){
-        var cartVal= cart.reduce(function(acc,currEl){
-            return acc.price + curr.price;
-        });
-        cartVal= "₹" +cartVal;
-        var div = document.createElement("div");
-        div.setAttribute("id", "cartVal");
-
-        var p= document.createElement("p");
-        p.textContent = "Total Value";
-
-        div.append(p, cartVal);
-
-        document.querySelector("body").append(div);
-    }
-
-</script> -->
 
 <script>
+
     var cart = JSON.parse(localStorage.getItem("cartproduct")) || [];
 
     if (cart.length === 0) {
@@ -159,4 +111,13 @@ If user enters ‘masai30’, give a 30% discount. Update the total cart price a
 
         document.body.appendChild(totalDiv);
     }
+
+    document.getElementById("code").addEventListener("click" ,promo)
+  
+    function promo(){
+        if(code === "Masai30"){
+            cartTotal - 30
+        }
+    }
+
 </script>
