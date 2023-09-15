@@ -31,7 +31,7 @@ Each card should have a button with name "Add to Cart" -->
     </style>
 </head>
 <body>
-    
+   <button> <a href="addTocart.html"> Cart Page</a></button> 
     <div id="data">
 
     </div>
@@ -113,6 +113,7 @@ Each card should have a button with name "Add to Cart" -->
     
 
   ];
+  
 
 displayproduct();
 
@@ -138,6 +139,10 @@ function displayproduct(){
 
         var btn = document.createElement("button");
         btn.textContent = "Add to Cart";
+        btn.addEventListener("click", function(){
+            addtocart(ele);
+        
+        });
 
         pricebox.append(price, strikedoffprice);
 
@@ -145,5 +150,15 @@ function displayproduct(){
 
         document.querySelector("#data").append(div);
     })
+}
+
+var cartArr= JSON.parse(localStorage.getItem("cartProduct")) || [];
+
+function addtocart(ele){
+   
+   cartArr.push(ele);
+   console.log(ele);
+   localStorage.setItem("cartproduct", JSON.stringify(cartArr));
+
 }
 </script>

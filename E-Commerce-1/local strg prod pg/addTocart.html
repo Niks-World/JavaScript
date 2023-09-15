@@ -1,0 +1,162 @@
+<!-- 
+    E-COMMERCE ADD TO CART
+This is continuation to previous question
+Go to products page and complete add to cart button functionality.
+When clicked on add to cart, the product should get added to the user’s cart.
+Store products added in the cart to localstorage.
+Create Cart.html. Show all the products that have been added to the cart.
+User should be able to increase quantity of items in cart and price should change accordingly.
+User should also be able to delete item from the cart.
+On the top right corner, show the total number of items added to the cart and total price of the cart.
+Create an input box and ‘Apply Promo’ button.
+If user enters ‘masai30’, give a 30% discount. Update the total cart price accordingly.
+ -->
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>cart page</title>
+    <script>
+    
+    </script>
+    <style>
+        .cartpro{
+            display: flex;
+            justify-content: space-between;
+            /* border:  1px solid red ; */
+        }
+        img{
+            width: 200px;
+            /* border:  1px solid red ; */
+            margin-top: 10px;
+        }
+   
+        div {
+            display: flex;
+            /* border:  1px solid red ; */
+            justify-content: space-between;
+        }
+
+
+    </style>
+</head>
+
+<body>
+ <button><a href="/E-Commerce-1/local strg prod pg/man.html">Home Page</a></button>
+</body>
+</html>
+
+<!-- <script>
+
+
+    var cart =JSON.parse(localStorage.getItem("cartproduct")) || [];
+
+    if(cart.length ===0){
+        document.querySelector("body").textContent= "add Some product TO cart";
+    }
+    else{
+        displaycart();
+        calculatetotal();
+    }
+
+    function displaycart(){
+        cart.map(function(ele){
+            var div = document.createElement("div");
+            var image = document.createElement("img");
+
+            image.setAttribute("src",ele.immage_url);
+            image.setAttribute("alt", ele.name);
+
+            var name= document.createElement("h5");
+            name.textContent = ele.name;
+
+            var price= document.createElement("p");
+         price.textContent="₹"+ ele.strikedoffprice;
+
+            div.append(image,name, price);
+            div.setAttribute("class", "cartpro")
+            document.querySelector("body").append(div);
+            
+        })
+    }
+    function calculatetotal(){
+        var cartVal= cart.reduce(function(acc,currEl){
+            return acc.price + curr.price;
+        });
+        cartVal= "₹" +cartVal;
+        var div = document.createElement("div");
+        div.setAttribute("id", "cartVal");
+
+        var p= document.createElement("p");
+        p.textContent = "Total Value";
+
+        div.append(p, cartVal);
+
+        document.querySelector("body").append(div);
+    }
+
+</script> -->
+
+<script>
+    var cart = JSON.parse(localStorage.getItem("cartproduct")) || [];
+
+    if (cart.length === 0) {
+        // If the cart is empty, display a message.
+        var emptyCartMessage = document.createElement("p");
+        emptyCartMessage.textContent = "Add Some Products to the Cart";
+        document.body.appendChild(emptyCartMessage);
+
+    } else {
+        // If there are items in the cart, display the cart and calculate the total.
+        displayCart();
+        calculateTotal();
+    }
+
+    
+
+    function displayCart() {
+        cart.forEach(function (ele) {
+            var div = document.createElement("div");
+            var image = document.createElement("img");
+
+            image.setAttribute("src", ele.image_url);
+            image.setAttribute("alt", ele.name);
+
+            var name = document.createElement("h5");
+            name.textContent = ele.name;
+
+            var price = document.createElement("p");
+            price.textContent = "₹" + ele.price;
+
+            div.append(image, name, price);
+            div.setAttribute("class", "cartpro");
+            document.body.appendChild(div);
+        });
+    }
+
+    function calculateTotal() {
+        var cartTotal = cart.reduce(function (acc, currEl) {
+            // Fix the typo here: it should be acc + currEl.price
+            return acc + parseFloat(currEl.strikedoffprice);
+        }, 0); // Initialize the accumulator to 0.
+
+        cartTotal = "₹" + cartTotal.toFixed(2); // Format the total as currency.
+
+        var totalDiv = document.createElement("div");
+        totalDiv.setAttribute("id", "cartVal");
+
+        var p = document.createElement("p");
+        p.textContent = "Total Value";
+
+        var totalValue = document.createElement("p");
+        totalValue.textContent = cartTotal;
+
+        totalDiv.append(p, totalValue);
+
+        document.body.appendChild(totalDiv);
+    }
+</script>
