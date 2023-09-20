@@ -57,8 +57,10 @@
         var td5 = document.createElement("td");
         td5.textContent = "Bookmark";
 
-        td5.addEventListener("click", addTOBookmark);
-
+        td5.addEventListener("click", function(){
+          addTOBookmark(elem);
+        });
+        
         tr.append(td1, td2, td3, td4, td5);
 
         document.querySelector("#body").append(tr);

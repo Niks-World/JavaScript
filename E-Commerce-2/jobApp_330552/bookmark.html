@@ -35,7 +35,10 @@
     displaybookmark();
 
     function displaybookmark(){
-    bookmark.map(function (elem){
+
+      document.querySelector("#body").textContent = " ";
+
+    bookmark.map(function (elem , index){
       var tr = document.createElement("tr");
 
       var td1 = document.createElement("td");
@@ -47,11 +50,24 @@
         var td3 = document.createElement("td");
         td3.textContent = elem.role;
 
-        tr.append(td1, td2, td3);
+        var td4 = document.createElement("td");
+        td4.textContent = "Delete" ;
+
+        td4.addEventListener("click", function (){
+          deleteBookmark(index);
+        });
+
+        tr.append(td1, td2, td3, td4);
 
       document.querySelector("#body").append(tr);
 
     });
+  }
+
+  function deleteBookmark(startIndex){
+   var deleted = bookmark.splice(startIndex, 1);
+   localStorage.setItem("bookmark", JSON.stringify(bookmark));
+   displaybookmark();
   }
 
   </script>
