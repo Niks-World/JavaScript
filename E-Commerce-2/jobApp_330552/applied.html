@@ -14,15 +14,15 @@
       <div><a href="applied.html">Applied Jobs</a></div>
       <div><a href="bookmark.html">Bookmarks</a></div>
     </div>
-    <select  id="sortName">
+    <select  id="sortName" onchange="handleNameSort()">
       <option value="">Sort by Names</option>
       <option value="ascending">Ascending</option>
       <option value="descending">Descending</option>
     </select>
-    <select id="sortSalary">
+    <select id="sortSalary" onchange="handleSalarySort()">
       <option value="">Sort by Salary</option>
       <option value="htl">High to Low </option>
-      <option value="lth">Low yo High</option>
+      <option value="lth">Low to High</option>
     </select>
     <select id="filterRole" onchange="handleRoleFilter()">
       <option value="">filter by Role</option>
@@ -51,6 +51,44 @@
     //you need to code here
     var appliedJObs = JSON.parse(localStorage.getItem("jobList")) || [];
     displayJobs(appliedJObs);
+
+    function handleSalarySort(){
+      var selected = document.getElementById("sortSalary").value;
+      if(selected === "htl"){ //desending order
+        appliedJObs = appliedJObs.sort(function(a,b){
+          return b.salary - a.salary;
+        });
+      }
+
+      if(selected === "lth"){
+        appliedJObs = appliedJObs.sort(function (a,b ){
+          return a.salary - b.salary;
+        })
+      }
+      displayJobs(appliedJObs);
+      console.log(selected);
+    }
+
+    function handleNameSort() {
+      var selected = document.getElementById("sortName").value;
+      if(selected === "ascending"){
+        appliedJObs = appliedJObs.sort(function(a,b){
+          if(a.name > b.name) return 1;
+          if(a.name < b.name ) return -1;
+          return 0;
+        });
+      }
+
+      if(selected === "descending"){
+        appliedJObs = appliedJObs.sort(function(a,b){
+          if(a.name > b.name) return -1;
+          if(a.name < b.name ) return 1;
+          return 0;
+        });
+      }
+      displayJobs(appliedJObs); //calling the function 
+      console.log(selected,  appliedJObs);
+    }
 
     function handleRoleFilter(){
       var selectRole = document.getElementById("filterRole").value;
