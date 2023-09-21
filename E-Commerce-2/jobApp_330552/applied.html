@@ -14,7 +14,22 @@
       <div><a href="applied.html">Applied Jobs</a></div>
       <div><a href="bookmark.html">Bookmarks</a></div>
     </div>
-
+    <select  id="sortName">
+      <option value="">Sort by Names</option>
+      <option value="ascending">Ascending</option>
+      <option value="descending">Descending</option>
+    </select>
+    <select id="sortSalary">
+      <option value="">Sort by Salary</option>
+      <option value="htl">High to Low </option>
+      <option value="lth">Low yo High</option>
+    </select>
+    <select id="filterRole" onchange="handleRoleFilter()">
+      <option value="">filter by Role</option>
+      <option value="FSD">FSD</option>
+      <option value="Frontend">Frontend</option>
+      <option value="Backend">Backend</option>
+    </select>
     <main>
       <table>
         <thead>
@@ -35,10 +50,28 @@
   <script>
     //you need to code here
     var appliedJObs = JSON.parse(localStorage.getItem("jobList")) || [];
-    displayJobs();
+    displayJobs(appliedJObs);
 
-    function displayJobs(){
-      appliedJObs.map(function(elem){
+    function handleRoleFilter(){
+      var selectRole = document.getElementById("filterRole").value;
+      console.log(selectRole);
+
+      var filteredJobs = appliedJObs.filter(function (elem){
+        if(selectRole === ""){
+          return 1;
+        }
+        else{
+        return elem.role === selectRole;
+        }
+      })
+
+      displayJobs(filteredJobs);
+      console.log(filteredJobs);
+    }
+
+    function displayJobs(jobs){
+      document.querySelector("#body").textContent = " ";
+      jobs.map(function(elem){
 
         var tr = document.createElement("tr");
 
